@@ -4,12 +4,13 @@ var fs = require('fs')
 var server = http.createServer(function (req, res) {   // 2 - creating server
 
     //handle incomming requests here..
-    if (req.url == '/') { //check the URL of the current request
+    if (req.url == '/data') { //check the URL of the current request
 
         // set response header
         res.writeHead(200, { 'Content-Type': 'text/html' });
 
-        // set response content    
+        // set response content
+
         res.write('<html><body><p>This is home Page.</p></body></html>');
         res.end();
     }
@@ -29,7 +30,7 @@ var server = http.createServer(function (req, res) {   // 2 - creating server
     //     res.end();
 
     // }
-    else if (req.url == '/data') { //check the URL of the current request
+    else if (req.url == '/') { //check the URL of the current request
         fs.readFile('data/db.json', (err, data) => {
             if (err) throw err;
             res.writeHead(200, { 'Content-Type': 'application/json' });
